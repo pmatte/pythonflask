@@ -24,12 +24,11 @@ jobs:
 
       - name: Create and start virtual environment
         run: |
-          python -m venv antenv
-          source antenv/bin/activate
+          python -m venv venv
+          source venv/bin/activate
       
       - name: Install dependencies
         run: pip install -r requirements.txt
-        #run: pip install --target="./.python_packages/lib/python3.9/site-packages" -r ./requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
@@ -37,7 +36,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: python-app
-          path: .
+          path: |
+            . 
+            !venv/
 
   deploy:
     runs-on: ubuntu-latest
@@ -59,4 +60,4 @@ jobs:
         with:
           app-name: 'python39buildfrompackage'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_70D94AEC97B34FA58B63ECFC6BA4429B }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9FAD73AAB66048329C64ED851F1A39BD }}
