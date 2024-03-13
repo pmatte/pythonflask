@@ -8,6 +8,11 @@ cors = CORS(app)
 
 def dbCall():
     time.sleep(3)
+    values = ["a", "b", "c", "d", "c"]
+    for value in values:
+     print("print: ", value)
+     app.logger.info("logger: %s", value)
+
     productsdb = [
         { 'id': 0, 'title': 'Apples', 'price': 1.20 },
         { 'id': 1, 'title': 'Bananas', 'price': 1.45 },
