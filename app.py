@@ -4,7 +4,7 @@ import time
 import logging
 from flask_cors import CORS
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -15,7 +15,7 @@ def dbCall():
     for value in values:
      print("print: ", value)
      app.logger.info("logger: %s", value)
-     app.logger.debug("logger: %s", value)
+     #app.logger.debug("logger: %s", value)
 
     productsdb = [
         { 'id': 0, 'title': 'Apples', 'price': 1.20 },
